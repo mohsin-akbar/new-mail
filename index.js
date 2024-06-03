@@ -6,7 +6,11 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://mail-client-n.netlify.app/', // Replace with your Netlify domain
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post('/send-email', async (req, res) => {
